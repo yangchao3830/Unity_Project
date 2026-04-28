@@ -1,6 +1,5 @@
 using System;
 using MFrameWork.Evnet;
-using Unity.VisualScripting;
 
 public static class EvnetBus
 {
@@ -41,7 +40,7 @@ public static class EvnetBus
         Type eventType = typeof(TEvent);
         if (EventDict.TryGetValue(eventType, out var receivers))
         {
-            for (int i = 0; i <= receivers.Count; i++)
+            for (int i = 0; i < receivers.Count; i++)
             {
                 var obj = receivers[i];
 
