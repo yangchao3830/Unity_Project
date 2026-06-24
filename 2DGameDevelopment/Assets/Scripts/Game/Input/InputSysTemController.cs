@@ -46,8 +46,18 @@ public class InputSysTemController : Singleton<InputSysTemController>, IEventRec
 
     public bool GetPlayerConfirmPressed()
     {
-           if (!_isInitialized || _currentMap != ActiveMap.Player) return false;
+        if (!_isInitialized || _currentMap != ActiveMap.Player) return false;
         return _inputActions.Player.Confirm.WasPressedThisFrame();
+    }
+
+    public bool GetUICancelPressed()
+    {
+        print(_currentMap);
+        print("_isInitialized" + _isInitialized);
+        if (_currentMap != ActiveMap.UI || !_isInitialized) return false;
+
+        return _inputActions.UI.Cancel.WasPerformedThisFrame();
+
     }
 
     #region  事件实现
@@ -78,6 +88,7 @@ public class InputSysTemController : Singleton<InputSysTemController>, IEventRec
         {
             case GameMode.Battle:
             case GameMode.InteractionMenu:
+                return ActiveMap.UI;
             case GameMode.Puase:
                 return ActiveMap.UI;
             case GameMode.Explore:

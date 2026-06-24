@@ -13,3 +13,47 @@ public enum ActiveMap
     Battle,
     None
 }
+
+public enum CameraView
+{
+    Explore,
+    Battle,
+    BattleResult
+}
+
+public enum PlayerJob
+{
+    Any,
+    /// <summary>
+    /// 剑士
+    /// </summary>
+    Warrior,
+     /// <summary>
+    /// 药师
+    /// </summary>
+    Apothecary,
+    /// <summary>
+    /// 神官
+    /// </summary>
+    Cleric,
+     /// <summary>
+    /// 舞娘
+    /// </summary>
+    Dancer,
+     /// <summary>
+    /// 猎人
+    /// </summary>
+    Hunter,
+     /// <summary>
+    /// 商人
+    /// </summary>
+    Merchant,
+     /// <summary>
+    /// 学者
+    /// </summary>
+    Scholar,
+     /// <summary>
+    /// 盗贼
+    /// </summary>
+    Thief,
+}
