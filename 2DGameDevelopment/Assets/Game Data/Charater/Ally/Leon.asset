@@ -15,4 +15,15 @@ MonoBehaviour:
   ID: leon
   Name: "\u91CC\u6602"
   Portrait: {fileID: -1365205660, guid: 7df3e2e8a1fb24977b31196b82d158a3, type: 3}
+  BaseLevel: 1
+  BaseStats:
+    MaxHP: 150
+    MaxSP: 60
+    PAtk: 10
+    PDef: 10
+    MAtk: 10
+    MDef: 10
+    Speed: 10
+    Accuracy: 10
+    Evastion: 10
   Job: 1
