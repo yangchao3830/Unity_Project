@@ -26,6 +26,8 @@ MonoBehaviour:
     Speed: 10
     Accuracy: 10
     Evastion: 10
+  fieldAnimator: {fileID: 22100000, guid: c6238f653978581489a9f950184066bd, type: 2}
+  battleAnimator: {fileID: 0}
   Job: 4
   globalGrowthConfigSO: {fileID: 11400000, guid: 295da1e062c75624f93f6f48ad67555a,
     type: 2}
@@ -33,7 +35,7 @@ MonoBehaviour:
     HP: 3
     SP: 0
     PAtk: 4
-    PDek: 4
+    PDef: 0
     MAtk: 1
     MDef: 2
     Speed: 3
