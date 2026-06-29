@@ -36,6 +36,7 @@ public class PanelController : MonoBehaviour
     protected void OnConfirm()
     {
         CurrentAction.Execute();
+        ClosePanel();
     }
 
     /// <summary>

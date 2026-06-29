@@ -24,6 +24,9 @@ IEventReceiver<GameModeChangeEvent>
     private IReadOnlyList<ActionCommandInfo> _currentCommandList;
 
     private Transform _headAnchor;
+
+    private InteractionBase _target;
+
     #region  周期函数
     void Awake()
     {
@@ -52,7 +55,7 @@ IEventReceiver<GameModeChangeEvent>
         var input = InputSysTemController.Instance;
         if (input.GetUICancelPressed())
         {
-            CloseMenu(true);            
+            CloseMenu(true);
         }
     }
 
@@ -95,6 +98,11 @@ IEventReceiver<GameModeChangeEvent>
 
     private void UpdateHeadIconPosition()
     {
+        if(_target is null || !_target.isActiveAndEnabled)
+        {
+            HideHeadIcons();
+            return;
+        }
         var worldPos = _headAnchor.position;
         var screeenPos = Camera.main.WorldToScreenPoint(worldPos);
         if (RectTransformUtility.ScreenPointToLocalPointInRectangle(transform as RectTransform, screeenPos, null, out var localPoint))
@@ -140,10 +148,10 @@ IEventReceiver<GameModeChangeEvent>
     /// <param name="evt"></param>Icon
     public void OnEvent(InteractionChangedEvent evt)
     {
+        _target = evt.target;
         if (!evt.inRange || evt.target is null)
         {
-            actionIconHolder.gameObject.SetActive(false);
-            ReleaseAll(_actionIcons, _iconPool);
+            HideHeadIcons();
             return;
         }
         //启动显示头顶
@@ -161,8 +169,7 @@ IEventReceiver<GameModeChangeEvent>
     public void OnEvent(InteractionMenuRequesEvent evt)
     {
         //关闭显示头顶Icon
-        actionIconHolder.gameObject.SetActive(false);
-        ReleaseAll(_actionIcons, _iconPool);
+        HideHeadIcons();
 
         actionMenuHolder.gameObject.SetActive(true);
         OpenMenu(evt.target);
@@ -170,11 +177,11 @@ IEventReceiver<GameModeChangeEvent>
 
     public void OnEvent(GameModeChangeEvent evt)
     {
-        if(evt.newMode == GameMode.InteractionMenu) return;
+        if (evt.newMode == GameMode.InteractionMenu) return;
 
-        if(evt.newMode == GameMode.Explore)
+        if (evt.newMode == GameMode.Explore)
         {
-            if(_currentCommandList is not null && _currentCommandList.Count > 0)
+            if (_currentCommandList is not null && _currentCommandList.Count > 0)
             {
                 ShowHeadIcons();
             }

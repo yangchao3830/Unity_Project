@@ -52,8 +52,6 @@ public class InputSysTemController : Singleton<InputSysTemController>, IEventRec
 
     public bool GetUICancelPressed()
     {
-        print(_currentMap);
-        print("_isInitialized" + _isInitialized);
         if (_currentMap != ActiveMap.UI || !_isInitialized) return false;
 
         return _inputActions.UI.Cancel.WasPerformedThisFrame();

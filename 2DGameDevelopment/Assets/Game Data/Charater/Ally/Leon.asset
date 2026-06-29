@@ -15,7 +15,7 @@ MonoBehaviour:
   ID: leon
   Name: "\u91CC\u6602"
   Portrait: {fileID: -1365205660, guid: 7df3e2e8a1fb24977b31196b82d158a3, type: 3}
-  BaseLevel: 1
+  BaseLevel: 4
   BaseStats:
     MaxHP: 150
     MaxSP: 60
@@ -26,4 +26,16 @@ MonoBehaviour:
     Speed: 10
     Accuracy: 10
     Evastion: 10
+  fieldAnimator: {fileID: 0}
+  battleAnimator: {fileID: 0}
   Job: 1
+  globalGrowthConfigSO: {fileID: 11400000, guid: 295da1e062c75624f93f6f48ad67555a,
+    type: 2}
+  growthProfile:
+    HP: 0
+    SP: 0
+    PAtk: 0
+    PDef: 0
+    MAtk: 0
+    MDef: 0
+    Speed: 0
