@@ -11,9 +11,10 @@ public class PlayerInteractor : MonoBehaviour
 
     void Update()
     {
+        if(_target is null || _target.CachedCommandInfo.Count == 0) return;
         var input = InputSysTemController.Instance;
-        if(input is null) return;
-        if(input.GetPlayerConfirmPressed() && _target != null)
+        if (input is null) return;
+        if (input.GetPlayerConfirmPressed() && _target != null)
         {
             _target.Interact(_characterIdentity.CharacterDefinition as AllyDefinitionSO);
         }
@@ -21,7 +22,7 @@ public class PlayerInteractor : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent(out InteractionBase interactionBase))
+        if (other.TryGetComponent(out InteractionBase interactionBase))
         {
             _target = interactionBase;
             interactionBase.OnFocus(_characterIdentity.CharacterDefinition as AllyDefinitionSO);
@@ -30,11 +31,11 @@ public class PlayerInteractor : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-          if(other.TryGetComponent(out InteractionBase interactionBase))
-        {           
+        if (other.TryGetComponent(out InteractionBase interactionBase))
+        {
             interactionBase.OnLoseFocus(_characterIdentity.CharacterDefinition as AllyDefinitionSO);
-             _target = null;
         }
+        _target = null;
     }
 
 }

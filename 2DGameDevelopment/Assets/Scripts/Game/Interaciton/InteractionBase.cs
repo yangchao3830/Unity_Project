@@ -24,7 +24,14 @@ public class InteractionBase : MonoBehaviour
     CacheActions();
     HeadAnchor = transform.GetChild(0);
   }
-  public void Interact(AllyDefinitionSO interactor)
+
+    void OnDisable()
+    {
+        _currentInteractor = null;
+        _cachedCommandInfo.Clear();
+        _visibleEntries.Clear();
+    }
+    public void Interact(AllyDefinitionSO interactor)
   {
     EvnetBus.Publish(new InteractionMenuRequesEvent(this));
   }
@@ -55,8 +62,9 @@ public class InteractionBase : MonoBehaviour
     for (int i = 0; i < _actionsCache.Length; i++)
     {
       var action = _actionsCache[i];
-      if (!action.CanShow(_currentInteractor))
-      {
+      //if (!action.CanShow(_currentInteractor))
+      if(!CanAnyPartyMemberExecute(action))
+      { 
         continue;
       }
       _visibleEntries.Add(new VisibleActionEntry
@@ -83,6 +91,25 @@ public class InteractionBase : MonoBehaviour
   private void PublishEvent(bool inRange)
   {
     EvnetBus.Publish(new InteractionChangedEvent(this, inRange));
+  }
+
+  private bool CanAnyPartyMemberExecute(ActionBase actionBase)
+  {
+    var partyMembers = PartyManager.Instance.PartyMembers;
+    if(partyMembers.Count > 0)
+    {
+      for (int i = 0; i < partyMembers.Count; i++)
+      {
+        var member = partyMembers[i];
+        if(member.Definition == null) continue;
+        if(actionBase.CanExecute(member.Definition as AllyDefinitionSO))
+        {
+          return true;
+        }        
+      }
+      return false;
+    }
+    return false;
   }
 
   #region UI 回调入口

@@ -28,7 +28,7 @@ public class PartyFieldController : MonoBehaviour
             var follower = fieldFollowers[i];
             float targetDistance = followDisatance * (i + 1);
             Vector3 targetPos = GetPointAtDistance(targetDistance);
-            follower.MoveTo(targetPos,followSpeed);
+            follower.MoveTo(ApplyFollowerOffset(targetPos,i),followSpeed);
         }
     }
 
@@ -93,7 +93,7 @@ public class PartyFieldController : MonoBehaviour
         if (dist > sampleMinDistance)
         {
             trail.Insert(0, leadPos);
-            if (trail.Count > 30)
+            if (trail.Count > 100)
             {
                 trail.RemoveAt(trail.Count - 1);//最多30个
             }

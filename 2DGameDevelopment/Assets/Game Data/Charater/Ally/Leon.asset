@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42d21a5a991f4a64a9027f93b57f06dc, type: 3}
   m_Name: Leon
   m_EditorClassIdentifier: 
-  ID: leon
+  ID: Leon
   Name: "\u91CC\u6602"
   Portrait: {fileID: -1365205660, guid: 7df3e2e8a1fb24977b31196b82d158a3, type: 3}
   BaseLevel: 4

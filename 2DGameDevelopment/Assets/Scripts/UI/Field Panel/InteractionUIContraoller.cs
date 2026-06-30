@@ -98,7 +98,7 @@ IEventReceiver<GameModeChangeEvent>
 
     private void UpdateHeadIconPosition()
     {
-        if(_target is null || !_target.isActiveAndEnabled)
+        if (_target is null || !_target.isActiveAndEnabled)
         {
             HideHeadIcons();
             return;
@@ -152,6 +152,8 @@ IEventReceiver<GameModeChangeEvent>
         if (!evt.inRange || evt.target is null)
         {
             HideHeadIcons();
+            _currentCommandList = null;
+            _target = null;
             return;
         }
         //启动显示头顶
