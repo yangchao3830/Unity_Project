@@ -76,7 +76,8 @@ MonoBehaviour:
   animator: {fileID: 2266968030426750710}
   isMovingParam: isMoving
   moveXparam: moveX
-  moveZparam: moveZ
+  moveYparam: moveY
+  movementThreshold: 0.001
   gravity: -25
   groundSnapFace: -2
   maxVelocity: -50
@@ -175,7 +176,7 @@ Animator:
   m_GameObject: {fileID: 4150171784394485070}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c6238f653978581489a9f950184066bd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

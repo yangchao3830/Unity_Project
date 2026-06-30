@@ -26,7 +26,7 @@ MonoBehaviour:
     Speed: 10
     Accuracy: 10
     Evastion: 10
-  fieldAnimator: {fileID: 0}
+  fieldAnimator: {fileID: 22100000, guid: c6238f653978581489a9f950184066bd, type: 2}
   battleAnimator: {fileID: 0}
   Job: 1
   globalGrowthConfigSO: {fileID: 11400000, guid: 295da1e062c75624f93f6f48ad67555a,

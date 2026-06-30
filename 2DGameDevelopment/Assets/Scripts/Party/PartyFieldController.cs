@@ -38,7 +38,7 @@ public class PartyFieldController : MonoBehaviour
 
         float accumulated = 0f;
 
-        for (int i = 0; i < trail.Count; i++)
+        for (int i = 0; i < trail.Count-1; i++)
         {
             Vector3 a = trail[i];
             Vector3 b = trail[i + 1];
